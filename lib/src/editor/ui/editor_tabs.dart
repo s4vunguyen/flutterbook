@@ -87,6 +87,11 @@ class _CoreContentTabsState extends State<CoreContentTabs> {
           const TabsVerticalDivider(),
           // if (context.read<TabProvider>().tab == FlutterBookTab.canvas)
           //   _CanvasTabs(),
+          StyledTextButton(
+            icon: FeatherIcons.smartphone,
+            isActive: context.watch<DevicePreviewProvider>().show,
+            onPressed: context.read<DevicePreviewProvider>().togglePreview,
+          ),
           if (!context.watch<ThemeProvider>().isUsingListOfThemes)
             StyledTextButton(
               icon: FeatherIcons.moon,
