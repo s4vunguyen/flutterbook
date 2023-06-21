@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'ripple.dart';
 
@@ -20,7 +19,6 @@ class Styles {
       onBackground: Color(0xff222222),
     ),
     shadowColor: const Color(0xff222222).withOpacity(0.05),
-    textTheme: GoogleFonts.mulishTextTheme(),
     dividerColor: const Color(0xff6C6F8D),
     canvasColor: const Color(0x7fc3e8f3),
     scaffoldBackgroundColor: const Color(0xfff3f6f9),
@@ -38,11 +36,6 @@ class Styles {
       onSecondary: Colors.white,
       background: Color(0xff222222),
       onBackground: Color(0xfff3f6f9),
-    ),
-    textTheme: GoogleFonts.mulishTextTheme().apply(
-      bodyColor: Colors.white,
-      displayColor: Colors.white,
-      decorationColor: Colors.white,
     ),
     hintColor: const Color(0xFFADADAD),
     shadowColor: const Color(0xff939393).withOpacity(0.05),
