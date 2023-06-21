@@ -46,21 +46,17 @@ class _CoreContentTabsState extends State<CoreContentTabs> {
                 border: Border(
                   bottom: BorderSide(
                     color: context.colorScheme.primary,
-                    style: context.watch<TabProvider>().tab ==
-                            FlutterBookTab.canvas
+                    style: context.watch<TabProvider>().tab == FlutterBookTab.canvas
                         ? BorderStyle.solid
                         : BorderStyle.none,
                     width: 3,
                   ),
                 ),
               ),
-              padding:
-                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+              padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
               child: Text(
                 'Canvas',
-                style: context.read<TabProvider>().tab == FlutterBookTab.canvas
-                    ? selectedTabStyle
-                    : tabStyle,
+                style: context.read<TabProvider>().tab == FlutterBookTab.canvas ? selectedTabStyle : tabStyle,
               ),
             ),
           ),
@@ -76,33 +72,27 @@ class _CoreContentTabsState extends State<CoreContentTabs> {
                   bottom: BorderSide(
                     color: context.colorScheme.primary,
                     style:
-                        context.watch<TabProvider>().tab == FlutterBookTab.docs
-                            ? BorderStyle.solid
-                            : BorderStyle.none,
+                        context.watch<TabProvider>().tab == FlutterBookTab.docs ? BorderStyle.solid : BorderStyle.none,
                     width: 3,
                   ),
                 ),
               ),
-              padding:
-                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+              padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
               child: Text(
                 'Docs',
-                style: context.read<TabProvider>().tab == FlutterBookTab.docs
-                    ? selectedTabStyle
-                    : tabStyle,
+                style: context.read<TabProvider>().tab == FlutterBookTab.docs ? selectedTabStyle : tabStyle,
               ),
             ),
           ),
           const TabsVerticalDivider(),
-          if (context.read<TabProvider>().tab == FlutterBookTab.canvas)
-            _CanvasTabs(),
+          // if (context.read<TabProvider>().tab == FlutterBookTab.canvas)
+          //   _CanvasTabs(),
           if (!context.watch<ThemeProvider>().isUsingListOfThemes)
             StyledTextButton(
               icon: FeatherIcons.moon,
               onPressed: context.read<ThemeProvider>().toggleDarkTheme,
             ),
-          if (context.watch<ThemeProvider>().isUsingListOfThemes)
-            _MultiThemeDropdownButton(),
+          if (context.watch<ThemeProvider>().isUsingListOfThemes) _MultiThemeDropdownButton(),
         ],
       ),
     );
