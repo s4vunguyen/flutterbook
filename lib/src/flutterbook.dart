@@ -60,8 +60,7 @@ class _FlutterBookState extends State<FlutterBook> {
   Widget? selectedComponent;
 
   bool get useMultiTheme => widget.themes != null && widget.themes!.length > 1;
-  List<String> get themeNames =>
-      widget.themes?.map((theme) => theme.themeName).toList() ?? [];
+  List<String> get themeNames => widget.themes?.map((theme) => theme.themeName).toList() ?? [];
 
   @override
   void initState() {
@@ -91,9 +90,8 @@ class _FlutterBookState extends State<FlutterBook> {
       ],
       child: Consumer<ThemeProvider>(
         builder: (BuildContext context, model, Widget? child) {
-          ThemeData activeTheme = useMultiTheme
-              ? widget.themes![model.activeThemeIndex].theme
-              : widget.theme ?? Styles().theme;
+          ThemeData activeTheme =
+              useMultiTheme ? widget.themes![model.activeThemeIndex].theme : widget.theme ?? Styles().theme;
 
           return MaterialApp(
             title: 'Flutterbook',
@@ -108,12 +106,8 @@ class _FlutterBookState extends State<FlutterBook> {
                       headerPadding: widget.headerPadding,
                       categories: context.watch<List<Category>>().toList(),
                       onComponentSelected: (child) {
-                        navigator.currentState!.pushReplacementNamed(
-                            '/stories/${child?.path ?? ''}');
-                        context
-                            .read<CanvasDelegateProvider>()
-                            .storyProvider!
-                            .updateStory(child);
+                        navigator.currentState!.pushNamed('/stories/${child?.path ?? ''}');
+                        context.read<CanvasDelegateProvider>().storyProvider!.updateStory(child);
                       },
                     ),
                     Expanded(
