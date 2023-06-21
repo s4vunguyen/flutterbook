@@ -117,7 +117,7 @@ class _FlutterBookState extends State<FlutterBook> {
                         initialRoute: '/',
                         onGenerateRoute: (settings) => generateRoute(
                           context,
-                          settings.name,
+                          null,
                           settings: settings,
                         ),
                       ),
