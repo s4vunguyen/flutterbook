@@ -14,8 +14,7 @@ ModalRoute<void> generateRoute(
   ChangeNotifierProvider<StoryProvider> builder(context) {
     return ChangeNotifierProvider<StoryProvider>(
       create: (context) {
-        final provider = StoryProvider.fromPath(
-            name, recursiveRetrievalOfStates(context.read<List<Category>>()));
+        final provider = StoryProvider.fromPath(name, recursiveRetrievalOfStates(context.read<List<Category>>()));
         context.read<CanvasDelegateProvider>().storyProvider = provider;
         return provider;
       },

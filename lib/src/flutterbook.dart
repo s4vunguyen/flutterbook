@@ -106,7 +106,7 @@ class _FlutterBookState extends State<FlutterBook> {
                       headerPadding: widget.headerPadding,
                       categories: context.watch<List<Category>>().toList(),
                       onComponentSelected: (child) {
-                        navigator.currentState!.pushNamed('/stories/${child?.path ?? ''}');
+                        navigator.currentState!.pushReplacementNamed('/stories/${child?.path ?? ''}');
                         context.read<CanvasDelegateProvider>().storyProvider!.updateStory(child);
                       },
                     ),
@@ -117,7 +117,7 @@ class _FlutterBookState extends State<FlutterBook> {
                         initialRoute: '/',
                         onGenerateRoute: (settings) => generateRoute(
                           context,
-                          null,
+                          settings.name,
                           settings: settings,
                         ),
                       ),
