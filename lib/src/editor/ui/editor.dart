@@ -24,8 +24,7 @@ class Editor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ComponentState? currentStory =
-        context.watch<CanvasDelegateProvider>().storyProvider?.currentStory;
+    ComponentState? currentStory = context.watch<CanvasDelegateProvider>().storyProvider?.currentStory;
 
     return Container(
       decoration: BoxDecoration(
@@ -70,13 +69,10 @@ class Editor extends StatelessWidget {
                     ),
                     Consumer<TabProvider>(
                       builder: (context, model, child) {
-                        List<ComponentState> state = recursiveRetrievalOfStates(
-                            context.read<List<Category>>());
+                        List<ComponentState> state = recursiveRetrievalOfStates(context.read<List<Category>>());
 
                         Widget element =
-                            model.tab == editor.FlutterBookTab.canvas
-                                ? _Canvas(component)
-                                : _Doc(state, currentStory);
+                            model.tab == editor.FlutterBookTab.canvas ? _Canvas(component) : _Doc(state, currentStory);
                         return element;
                       },
                     )
@@ -137,12 +133,11 @@ class _Doc extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle titleStyle =
-        Theme.of(context).textTheme.subtitle1!.copyWith(
-              color: Theme.of(context).hintColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 32,
-            );
+    final TextStyle titleStyle = Theme.of(context).textTheme.subtitle1!.copyWith(
+          color: Theme.of(context).hintColor,
+          fontWeight: FontWeight.bold,
+          fontSize: 32,
+        );
 
     return SingleChildScrollView(
       child: Align(
@@ -190,12 +185,10 @@ class _InteractiveViewerCanvas extends StatefulWidget {
   _InteractiveViewerCanvas(this.component, this.controller);
 
   @override
-  State<_InteractiveViewerCanvas> createState() =>
-      _InteractiveViewerCanvasState();
+  State<_InteractiveViewerCanvas> createState() => _InteractiveViewerCanvasState();
 }
 
-class _InteractiveViewerCanvasState extends State<_InteractiveViewerCanvas>
-    with TickerProviderStateMixin {
+class _InteractiveViewerCanvasState extends State<_InteractiveViewerCanvas> with TickerProviderStateMixin {
   Animation<Matrix4>? _animationReset;
   late AnimationController _controllerReset;
 
@@ -257,6 +250,7 @@ class _InteractiveViewerCanvasState extends State<_InteractiveViewerCanvas>
           boundaryMargin: EdgeInsets.all(double.infinity),
           child: widget.component ?? const SizedBox.shrink(),
           panEnabled: model.panEnabled,
+          scaleEnabled: false,
           onInteractionStart: _onInteractionStart,
           transformationController: widget.controller,
         );
@@ -272,8 +266,7 @@ class Story extends StatelessWidget {
   Widget build(BuildContext context) {
     final story = context.watch<StoryProvider>().currentStory;
 
-    return story?.builder(
-            context, context.watch<CanvasDelegateProvider>().storyProvider!) ??
+    return story?.builder(context, context.watch<CanvasDelegateProvider>().storyProvider!) ??
         Container(
           color: context.colorScheme.onSecondary,
           child: Center(
