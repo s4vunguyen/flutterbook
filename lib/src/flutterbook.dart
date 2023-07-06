@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' as f;
 import 'package:flutter/material.dart';
 import 'package:flutterbook/src/editor/providers/device_preview_provider.dart';
 import 'package:flutterbook/src/editor/providers/pan_provider.dart';
@@ -92,7 +93,10 @@ class _FlutterBookState extends State<FlutterBook> {
         builder: (BuildContext context, model, Widget? child) {
           ThemeData activeTheme =
               useMultiTheme ? widget.themes![model.activeThemeIndex].theme : widget.theme ?? Styles().theme;
-
+          String baseUrl = '/';
+          if (f.kIsWeb) {
+            baseUrl = Uri.base.fragment;
+          }
           return MaterialApp(
             title: 'Flutterbook',
             debugShowCheckedModeBanner: false,
@@ -114,7 +118,7 @@ class _FlutterBookState extends State<FlutterBook> {
                       child: Navigator(
                         reportsRouteUpdateToEngine: true,
                         key: navigator,
-                        initialRoute: '/',
+                        initialRoute: baseUrl,
                         onGenerateRoute: (settings) => generateRoute(
                           context,
                           settings.name,
