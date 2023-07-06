@@ -95,7 +95,7 @@ class _FlutterBookState extends State<FlutterBook> {
               useMultiTheme ? widget.themes![model.activeThemeIndex].theme : widget.theme ?? Styles().theme;
           String baseUrl = '/';
           if (f.kIsWeb) {
-            baseUrl = Uri.base.query.replaceAll("q=", "");
+            baseUrl = Uri.base.query.replaceAll("p=", "");
           }
           return MaterialApp(
             title: 'Flutterbook',
